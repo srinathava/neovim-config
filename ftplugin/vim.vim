@@ -31,10 +31,10 @@ call IMAP ('TED', 'call Tex_Debug("<++>", "<++>")', 'vim')
 " AskVimFunc: asks for function name and sets up template {{{
 " Description: 
 function! AskVimFunc()
-	let name = input('Name of the function : ')
-	if name == ''
-		let name = "<+Function Name+>"
-	end
+    let name = input('Name of the function : ')
+    if name == ''
+        let name = "<+Function Name+>"
+    end
     let ch = confirm('What kind of a function is this?', "&Global\n&Autoload\n&ScriptLocal", '1')
     if ch == '1'
         let prefix = ''
@@ -54,13 +54,13 @@ function! AskVimFunc()
         let prefix = 's:'
     endif
 
-	return IMAP_PutTextWithMovement( 
+    return IMAP_PutTextWithMovement( 
         \ "endfunction \" }}}\<esc>O" .
-		\ "\" ".prefix.name.": <++> {{{\<cr>" .
-		\ "Description: <++>\<cr>" . 
-		\ "\<C-u>function! ".prefix.name."(<++>)<++>\<cr>" . 
-		\       "<+function body+>"
-		\ )
+        \ "\" ".prefix.name.": <++> {{{\<cr>" .
+        \ "Description: <++>\<cr>" . 
+        \ "\<C-u>function! ".prefix.name."(<++>)<++>\<cr>" . 
+        \       "<+function body+>"
+        \ )
 endfunction " }}}
 
 " vim600:fdm=marker

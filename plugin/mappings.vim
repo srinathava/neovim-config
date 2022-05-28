@@ -1,5 +1,5 @@
 " echo the highlight group currently under cursor. (from vim.source...)
-map  <F8>  :echo 'hi<' .synIDattr(synID(line("."),col("."),1),"name") .'>'<cr>
+map  <F6>  :echo 'hi<' .synIDattr(synID(line("."),col("."),1),"name") .'>'<cr>
 " source the selected text in vim (really useful)
 " mnemonic: r for run
 vmap <c-r> "ny:exec @n<cr>:<bs>
@@ -36,3 +36,8 @@ inoremap <C-h> <left>
 
 inoremap <C-q> <C-k>
 
+tnoremap <C-w> <C-\><C-N><C-w>
+augroup EnterTermMode
+    au!
+    autocmd BufWinEnter,WinEnter term://* startinsert
+augroup END

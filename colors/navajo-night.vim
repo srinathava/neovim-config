@@ -51,7 +51,7 @@ hi IncSearch term=reverse cterm=reverse gui=reverse
 hi Search term=reverse ctermbg=White ctermfg=Black cterm=reverse guifg=White guibg=Black
 hi MoreMsg term=bold ctermfg=green gui=bold guifg=#d174a8
 hi ModeMsg term=bold cterm=bold gui=bold
-hi LineNr term=underline ctermfg=darkcyan ctermbg=grey guibg=#7f7f7f gui=bold guifg=White
+hi LineNr term=underline ctermfg=darkcyan ctermbg=grey guifg=grey guibg=#314D67
 hi Question term=standout ctermfg=darkgreen gui=bold guifg=#d174a8
 hi StatusLine term=bold,reverse cterm=bold,reverse gui=bold guifg=Black guibg=White
 hi StatusLineNC term=reverse cterm=reverse gui=bold guifg=#116f6f guibg=#8f8f8f
@@ -73,7 +73,7 @@ hi Match term=bold,reverse ctermbg=Blue ctermfg=Yellow cterm=bold,reverse gui=bo
 
 
 " Colours for syntax highlighting
-hi Comment term=bold ctermfg=darkblue guifg=#e7e77f
+hi Comment term=bold ctermfg=darkblue guifg=#e7e77f gui=italic
 hi Constant term=underline ctermfg=darkred guifg=#3fffa7
 hi Special term=bold ctermfg=darkgreen guifg=#bfbfef
 hi Identifier term=underline ctermfg=darkcyan cterm=NONE guifg=#ef9f9f
@@ -94,5 +94,8 @@ hi User4        gui=bold guifg=Cyan       guibg=#0c0c0c
 " Colour misspelt words
 hi BadWord ctermfg=White ctermbg=darkred cterm=bold guifg=Yellow guibg=#522719 gui=bold
 hi PMenu guifg=black guibg=lightgray
+
+hi link CocSemParameter Normal
+hi link CocSemVariable Normal
 
 " vim:set list et:

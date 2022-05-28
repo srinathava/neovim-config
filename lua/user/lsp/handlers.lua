@@ -56,7 +56,7 @@ local function lsp_keymaps(bufnr)
     map("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
     map("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
     map("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
-    map("gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>')
+    map("gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>')
     map("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
     map("<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
 end
@@ -71,11 +71,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-    return M
-end
-
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M

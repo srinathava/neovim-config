@@ -1,11 +1,30 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
+local prev = cmp.mapping({
+    i = function(fallback)
+        if cmp.visible() then
+            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+        else
+            fallback()
+        end
+    end
+});
+
+local next = cmp.mapping({
+    i = function(fallback)
+        if cmp.visible() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        else
+            fallback()
+        end
+    end
+});
+
 cmp.setup({
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            require('luasnip').lsp_expand(args.body)
         end,
     },
     window = {
@@ -13,25 +32,31 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<tab>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 's', 'c' }),
+        ['<C-n>'] = next,
+        ['<C-j>'] = next,
+        ['<Down>'] = next,
+        ['<C-p>'] = prev,
+        ['<C-k>'] = prev,
+        ['<Up>'] = prev,
     }),
-    sources = cmp.config.sources({
+    sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'luasnip' },
         { name = 'buffer' },
-    }),
-    completion = {
-        completeopt = 'menu,menuone,noinsert'
+        { name = 'nvim_lsp_signature_help' }
     }
+})
+
+cmp.setup.cmdline(':', {
+    enabled = false,
 })
 
 cmp.setup.filetype({'MW_FILES'}, {
     enabled = false
 })
 
+-- Otherwise, press <tab> inserts a literal ^[ character in the command
+-- line.
+vim.cmd[[autocmd CmdLineEnter * silent! cunmap <tab>]]
