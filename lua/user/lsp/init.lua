@@ -4,7 +4,7 @@ local handlers = require('user.lsp.handlers')
 
 handlers.setup()
 
-local myservers = {"pyright", "sumneko_lua", "clangd"}
+local myservers = {"pyright", "sumneko_lua", "clangd", "emmet_ls", "cssls", "tsserver"}
 
 lspinstaller.setup {
     ensure_installed = myservers

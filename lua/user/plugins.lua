@@ -67,7 +67,7 @@ return packer.startup(function(use)
 
     -- snippets
     use "L3MON4D3/LuaSnip" --snippet engine
-    -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
@@ -90,6 +90,10 @@ return packer.startup(function(use)
     -- Git
     use 'tpope/vim-fugitive'
     use "lewis6991/gitsigns.nvim"
+    use 'kdheepak/lazygit.nvim'
+
+    use 'tpope/vim-commentary'
+    
     --
     -- use {
     --   'nvim-lualine/lualine.nvim',

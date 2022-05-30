@@ -4,9 +4,11 @@ set title " makes terminal show current file in title
 
 filetype plugin on
 
-set rtp+=~/.vim/
-set packpath+=~/.vim/
-packadd! vim-tools-dev
+if isdirectory($HOME.'/.vim')
+    set rtp+=~/.vim/
+    set packpath+=~/.vim/
+    packadd! vim-tools-dev
+endif
 
 " source /mathworks/devel/sandbox/savadhan/vim/mw-completions/_vimrc
 
