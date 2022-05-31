@@ -20,4 +20,5 @@ require'user.lsp'
 require'user.cmp'
 require'user.snip'
 require'user.setup'
+require'user.whichkey'
 EOF

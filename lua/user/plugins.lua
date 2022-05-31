@@ -93,15 +93,12 @@ return packer.startup(function(use)
     use 'kdheepak/lazygit.nvim'
 
     use 'tpope/vim-commentary'
-    
-    --
-    -- use {
-    --   'nvim-lualine/lualine.nvim',
-    --   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    -- }
 
-    --vim.g.vimspector_enable_mappings = 'HUMAN'
-    --use 'puremourning/vimspector'
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+      require("toggleterm").setup()
+    end}
+
+    use 'folke/which-key.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
