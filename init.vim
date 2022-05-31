@@ -16,8 +16,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-" source /mathworks/devel/sandbox/savadhan/vim/mw-completions/_vimrc
-
 let g:cpp_started_ccls_server = 1
 
 lua <<EOF
@@ -25,6 +23,6 @@ require'user.plugins'
 require'user.lsp'
 require'user.cmp'
 require'user.snip'
-require'user.setup'
 require'user.whichkey'
+require'user.treesitter'
 EOF
