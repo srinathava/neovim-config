@@ -10,6 +10,12 @@ if isdirectory($HOME.'/.vim')
     packadd! vim-tools-dev
 endif
 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 " source /mathworks/devel/sandbox/savadhan/vim/mw-completions/_vimrc
 
 let g:cpp_started_ccls_server = 1
