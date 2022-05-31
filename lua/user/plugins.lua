@@ -89,7 +89,10 @@ return packer.startup(function(use)
 
     -- Git
     use 'tpope/vim-fugitive'
-    use "lewis6991/gitsigns.nvim"
+
+    use {"lewis6991/gitsigns.nvim", config = function()
+        require('gitsigns').setup()
+    end}
     use 'kdheepak/lazygit.nvim'
 
     use 'tpope/vim-commentary'
