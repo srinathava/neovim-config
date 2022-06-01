@@ -49,18 +49,13 @@ return packer.startup(function(use)
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use "lewis6991/impatient.nvim"
-    -- use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
     -- Colorschemes
-    -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-    -- use "lunarvim/darkplus.nvim"
     use 'folke/tokyonight.nvim'
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
-    -- use "hrsh7th/cmp-path" -- path completions
-    -- use "hrsh7th/cmp-cmdline" -- cmdline completions
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
@@ -72,13 +67,9 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-    -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-    -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
-
-    -- use "RRethy/vim-illuminate"
 
     -- Treesitter
     use {
@@ -89,11 +80,9 @@ return packer.startup(function(use)
 
     -- Git
     use 'tpope/vim-fugitive'
-
     use {"lewis6991/gitsigns.nvim", config = function()
         require('gitsigns').setup()
     end}
-    use 'kdheepak/lazygit.nvim'
 
     use 'tpope/vim-commentary'
 

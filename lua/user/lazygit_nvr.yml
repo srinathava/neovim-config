@@ -1,0 +1,3 @@
+os:
+  editCommand: 'nvr'
+  openCommand: 'nvr {{filename}}'
