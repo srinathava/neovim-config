@@ -7,19 +7,21 @@ local function script_path()
    return str:match("(.*/)")
 end
 
-local cmd = 'lazygit'
-if vim.fn.executable('nvr') then
-    -- If nvr is found, then use it within neovim
-    cmd = 'lazygit -ucf ~/.config/lazygit/config.yml,'..script_path()..'lazygit_nvr.yml'
+local function create_lazygit_term()
+    local cmd = 'lazygit'
+    if vim.fn.executable('nvr') then
+        -- If nvr is found, then use it within neovim
+        cmd = 'lazygit -ucf ~/.config/lazygit/config.yml,'..script_path()..'lazygit_nvr.yml'
+    end
+    cmd = "VIM= VIMRUNTIME= "..cmd
+    return Terminal:new({
+        cmd = cmd,
+        hidden = true,
+        direction = "float"
+    })
 end
-cmd = "VIM= VIMRUNTIME= "..cmd
-
-local lazygit = Terminal:new({
-    cmd = cmd,
-    hidden = true,
-    direction = "float"
-})
-function _LAZYGIT_TOGGLE()
+local lazygit = create_lazygit_term()
+local function toggle_lazygit()
     lazygit:toggle()
 end
 
@@ -34,10 +36,6 @@ wk.register({
     c = { "<cmd>MWCompileProject<cr>", "Compile current project" },
     o = { "<cmd>MWOpenFile<cr>", "Open file" },
   },
-  t = {
-    name = "Terminal",
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-  },
-  g = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "Lazygit" }
+  T = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
+  G = { toggle_lazygit, "Lazygit" }
 }, { prefix = "<space>" })
