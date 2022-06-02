@@ -55,6 +55,8 @@ set wrap
 " no beeps. only flashes.
 set vb
 " allows for the vim yank command to be the windows clipboard.
+" unnamedplus makes it work for both the select buffer and the clipboard
+" buffer.
 set clipboard=unnamedplus
 " do not display a string of '@'s instead of a long unwrapped line 
 set display=lastline

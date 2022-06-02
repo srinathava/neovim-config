@@ -11,6 +11,7 @@ if isdirectory($HOME.'/.vim')
 endif
 
 lua <<EOF
+pcall('require', 'impatient')
 require'user.plugins'
 require'user.lsp'
 require'user.cmp'
