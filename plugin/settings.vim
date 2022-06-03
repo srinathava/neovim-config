@@ -7,7 +7,7 @@ filetype indent on
 " style script file.
 au BufWritePre *.vim :if &ff != 'unix' | set ff=unix | endif
 syntax on
-set colorcolumn=80
+set colorcolumn=120
 set expandtab
 set hls
 set ignorecase
@@ -55,7 +55,7 @@ set wrap
 " no beeps. only flashes.
 set vb
 " allows for the vim yank command to be the windows clipboard.
-set clipboard=unnamed
+set clipboard=unnamedplus
 " do not display a string of '@'s instead of a long unwrapped line 
 set display=lastline
 " preserve a minimum amount of context while scrolling off the screen

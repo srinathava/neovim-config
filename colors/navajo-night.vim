@@ -52,6 +52,8 @@ hi Search term=reverse ctermbg=White ctermfg=Black cterm=reverse guifg=White gui
 hi MoreMsg term=bold ctermfg=green gui=bold guifg=#d174a8
 hi ModeMsg term=bold cterm=bold gui=bold
 hi LineNr term=underline ctermfg=darkcyan ctermbg=grey guifg=grey guibg=#314D67
+hi clear SignColumn
+hi link SignColumn LineNr
 hi Question term=standout ctermfg=darkgreen gui=bold guifg=#d174a8
 hi StatusLine term=bold,reverse cterm=bold,reverse gui=bold guifg=Black guibg=White
 hi StatusLineNC term=reverse cterm=reverse gui=bold guifg=#116f6f guibg=#8f8f8f
@@ -63,9 +65,9 @@ hi WarningMsg term=standout ctermfg=darkred gui=bold guifg=Cyan
 hi WildMenu term=standout ctermfg=White ctermbg=darkyellow guifg=White guibg=Blue
 hi Folded term=standout ctermfg=darkblue ctermbg=grey guifg=White guibg=NONE guifg=#6f8faf
 hi FoldColumn term=standout ctermfg=darkblue ctermbg=grey guifg=#ffff74 guibg=#3f3f3f
-hi DiffAdd term=bold ctermbg=darkblue guibg=Black
-hi DiffChange term=bold ctermbg=darkmagenta guibg=#124a32
-hi DiffDelete term=bold ctermfg=darkblue ctermbg=blue cterm=bold gui=bold guifg=#522719 guibg=#09172f
+hi DiffAdd term=bold ctermbg=darkblue guibg=#314D67 guifg=lightgreen
+hi DiffChange term=bold ctermbg=darkmagenta guibg=#314D67 guifg=yellow
+hi DiffDelete term=bold ctermbg=darkmagenta guibg=#314D67 guifg=red
 hi DiffText term=reverse ctermbg=darkblue cterm=bold gui=bold guibg=#007f9f
 hi Cursor gui=reverse guifg=#bfbfef guibg=Black
 hi lCursor guifg=fg guibg=bg
@@ -84,6 +86,7 @@ hi Ignore ctermfg=grey cterm=bold guifg=bg
 
 hi Error term=reverse ctermfg=grey ctermbg=darkred cterm=bold gui=bold guifg=Black guibg=Cyan
 hi Todo term=standout ctermfg=darkblue ctermbg=Blue guifg=Yellow guibg=Blue
+hi ColorColumn guibg=#49647d
 
 " Colours for statusbar
 hi User1        gui=bold guifg=#565656  guibg=#0c0c0c
@@ -97,5 +100,9 @@ hi PMenu guifg=black guibg=lightgray
 
 hi link CocSemParameter Normal
 hi link CocSemVariable Normal
+
+hi LspReferenceRead guibg=#72879a
+hi link LspReferenceWrite LspReferenceRead
+hi link LspReferenceText LspReferenceRead
 
 " vim:set list et:
