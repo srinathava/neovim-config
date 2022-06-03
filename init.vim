@@ -10,8 +10,6 @@ if isdirectory($HOME.'/.vim')
     packadd! vim-tools-dev
 endif
 
-let g:cpp_started_ccls_server = 1
-
 lua <<EOF
 require'user.plugins'
 require'user.lsp'

@@ -92,6 +92,13 @@ return packer.startup(function(use)
 
     use 'folke/which-key.nvim'
 
+    use 'github/copilot.vim'
+    use "zbirenbaum/copilot.lua"
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua", "nvim-cmp" },
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
