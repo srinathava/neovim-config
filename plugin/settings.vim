@@ -100,7 +100,10 @@ call s:SetDir('backupdir')
 call s:SetDir('directory')
 call s:SetDir('undodir')
 
-let g:tokyo_night_style = 'night'
+let g:tokyonight_style = 'night'
+let g:tokyonight_colors = {
+            \ 'comment': '#90EE90'
+            \ }
 colorscheme tokyonight
 
 set number

@@ -3,6 +3,7 @@ set mouse=a " allows mouse for selection in terminal
 set title " makes terminal show current file in title
 
 filetype plugin on
+let g:cpp_started_ccls_server = v:true
 
 if isdirectory($HOME.'/.vim')
     set rtp+=~/.vim/
