@@ -25,6 +25,22 @@ local function toggle_lazygit()
     lazygit:toggle()
 end
 
+local terminals_created = {}
+
+local function new_terminal()
+    local name  = vim.fn.input('Enter a name for the terminal: ')
+    local term = Terminal:new({
+        hidden = true,
+        direction = "float",
+    })
+    terminals_created[#terminals_created+1] = term
+    local curnum = #terminals_created
+    wk.register({
+        ["<space>t"..curnum] = { function() term:toggle() end , "Terminal "..curnum..": "..name }
+    })
+    term:toggle()
+end
+
 -- timeoutlen of a reasonably small number works best to bring up the
 -- window for not so frequently used shortcuts "fast enough"
 vim.o.timeoutlen = 200
@@ -36,6 +52,10 @@ wk.register({
     c = { "<cmd>MWCompileProject<cr>", "Compile current project" },
     o = { "<cmd>MWOpenFile<cr>", "Open file" },
   },
-  T = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
+  t = {
+      name = "Terminal",
+      f = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
+      n = { new_terminal, "New terminal" },
+  },
   G = { toggle_lazygit, "Lazygit" }
 }, { prefix = "<space>" })
