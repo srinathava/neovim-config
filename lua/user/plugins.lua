@@ -62,6 +62,17 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    use {"jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        local nls = require("null-ls")
+        nls.setup({
+            sources= {
+                nls.builtins.formatting.stylua,
+                nls.builtins.diagnostics.eslint_d
+            }
+        })
+    end
+    }
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -95,6 +106,9 @@ return packer.startup(function(use)
     }
 
     use 'dstein64/vim-startuptime'
+
+    -- Auto-detect sw/expandtab based on current file
+    use 'tpope/vim-sleuth'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
