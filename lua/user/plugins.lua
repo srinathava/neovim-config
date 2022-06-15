@@ -62,17 +62,7 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-    use {"jose-elias-alvarez/null-ls.nvim",
-    config = function()
-        local nls = require("null-ls")
-        nls.setup({
-            sources= {
-                nls.builtins.formatting.stylua,
-                nls.builtins.diagnostics.eslint_d
-            }
-        })
-    end
-    }
+    use "jose-elias-alvarez/null-ls.nvim"
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
