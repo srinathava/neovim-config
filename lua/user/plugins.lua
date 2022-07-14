@@ -88,13 +88,6 @@ return packer.startup(function(use)
 
     use 'folke/which-key.nvim'
 
-    use 'github/copilot.vim'
-    use "zbirenbaum/copilot.lua"
-    use {
-        "zbirenbaum/copilot-cmp",
-        after = { "copilot.lua", "nvim-cmp" },
-    }
-
     use 'dstein64/vim-startuptime'
 
     -- Auto-detect sw/expandtab based on current file

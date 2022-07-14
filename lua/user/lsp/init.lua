@@ -1,14 +1,13 @@
 local lspconfig = require('lspconfig')
 local lspinstaller = require('nvim-lsp-installer')
-local handlers = require('user.lsp.handlers')
 local configs = require 'lspconfig.configs'
+local opts = require('user.lsp.opts')
 
-handlers.setup()
-
-local myservers = {"pyright", "sumneko_lua", "clangd", "emmet_ls", "cssls", "tsserver", "matlabls"}
+-- LSP servers which are do not special configuration for mw specific files
+local servers = {"pyright", "sumneko_lua", "cssls", "emmet_ls", "tsserver"}
 
 lspinstaller.setup {
-    ensure_installed = myservers
+    ensure_installed = servers
 }
 
 if not configs.matlabls then
@@ -39,16 +38,6 @@ if not configs.matlabls then
     }
 end
 
-for _, name in pairs(myservers) do
-    local common_opts = {
-        on_attach = handlers.on_attach,
-        capabilities = handlers.capabilities,
-    }
-
-    local total_opts = common_opts
-    local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. name)
-    if has_custom_opts then
-        total_opts = vim.tbl_deep_extend("force", server_custom_opts, common_opts)
-    end
-    lspconfig[name].setup(total_opts)
+for _, name in pairs(servers) do
+    lspconfig[name].setup(opts(name))
 end
