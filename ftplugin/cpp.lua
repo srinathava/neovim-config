@@ -6,6 +6,7 @@ local mwccls = require('user.lsp.mwccls')
 local filePath = vim.fn.expand('<abuf>:p:h')
 local mwRootDir = lspconfig.util.root_pattern('mw_anchor')(filePath)
 
+-- vim.notify("mwRootDir = " .. mwRootDir, vim.log.levels.WARN, {})
 if not mwRootDir then
     mwclangd.startClangd()
     return

@@ -4,7 +4,7 @@ local configs = require 'lspconfig.configs'
 local opts = require('user.lsp.opts')
 
 -- LSP servers which are do not special configuration for mw specific files
-local servers = {"pyright", "sumneko_lua", "cssls", "emmet_ls", "tsserver"}
+local servers = {"pyright", "sumneko_lua", "cssls", "emmet_ls", "tsserver", "rust_analyzer"}
 
 lspinstaller.setup {
     ensure_installed = servers

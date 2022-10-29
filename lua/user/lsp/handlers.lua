@@ -28,7 +28,7 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.documentHighlightProvider then
         vim.o.updatetime = 500
         vim.api.nvim_exec(
         [[
@@ -55,6 +55,7 @@ local function lsp_keymaps(bufnr)
     map("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
     map("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
     map("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+    map("gR", "<cmd>lua vim.lsp.buf.rename()<CR>")
     map("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
     map("gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>')
     map("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
@@ -63,12 +64,12 @@ end
 
 M.on_attach = function(client, bufnr)
     if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
     end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
 
-    vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+    -- vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
     vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 end
 
