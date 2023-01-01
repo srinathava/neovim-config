@@ -76,15 +76,23 @@ return packer.startup(function(use)
 
     -- Git
     use 'tpope/vim-fugitive'
-    use {"lewis6991/gitsigns.nvim", config = function()
-        require('gitsigns').setup()
-    end}
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
 
     use 'tpope/vim-commentary'
 
-    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-      require("toggleterm").setup()
-    end}
+    use {
+        "akinsho/toggleterm.nvim",
+        config = function()
+            require("toggleterm").setup()
+        end
+    }
+
 
     use 'folke/which-key.nvim'
 
@@ -92,6 +100,39 @@ return packer.startup(function(use)
 
     -- Auto-detect sw/expandtab based on current file
     use 'tpope/vim-sleuth'
+
+    use 'mustache/vim-mustache-handlebars'
+
+    use {
+        'epwalsh/obsidian.nvim',
+        config = function()
+            require("obsidian").setup({
+                dir = '/mathworks/devel/sandbox/savadhan/obsidian/work_stuff',
+                completion = {
+                    nvim_cmp = true
+                }
+            })
+        end
+    }
+
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('lualine').setup()
+        end
+    }
+
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            require('treesitter-context').setup{
+                max_lines = 0,
+                trim_scope = 'inner'
+            }
+        end
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

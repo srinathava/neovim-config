@@ -42,6 +42,7 @@ augroup EnterTermMode
     au!
     autocmd BufWinEnter,WinEnter term://* startinsert
     autocmd BufWinLeave,WinLeave term://* stopinsert
+    autocmd TermOpen * startinsert
 augroup END
 
 nnoremap <tab> za
