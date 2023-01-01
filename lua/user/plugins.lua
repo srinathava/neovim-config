@@ -72,7 +72,23 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
-    use "JoosepAlviste/nvim-ts-context-commentstring"
+
+    use {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                context_commentstring = {
+                    enable = true,
+                    config = {
+                        cpp = { __default = '// %s', __multiline = '/* %s */' }
+                    }
+
+                }
+            }
+        end
+    }
+
+    use 'tpope/vim-commentary'
 
     -- Git
     use 'tpope/vim-fugitive'
@@ -83,16 +99,12 @@ return packer.startup(function(use)
         end
     }
 
-
-    use 'tpope/vim-commentary'
-
     use {
         "akinsho/toggleterm.nvim",
         config = function()
             require("toggleterm").setup()
         end
     }
-
 
     use 'folke/which-key.nvim'
 
@@ -114,7 +126,6 @@ return packer.startup(function(use)
             })
         end
     }
-
 
     use {
         'nvim-lualine/lualine.nvim',

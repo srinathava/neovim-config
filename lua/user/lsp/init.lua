@@ -3,7 +3,6 @@ local lspinstaller = require('nvim-lsp-installer')
 local configs = require 'lspconfig.configs'
 local opts = require('user.lsp.opts')
 
--- LSP servers which are do not special configuration for mw specific files
 local servers = {"pyright", "sumneko_lua", "cssls", "emmet_ls", "tsserver", "rust_analyzer", "bashls"}
 
 lspinstaller.setup {
