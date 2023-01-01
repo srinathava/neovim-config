@@ -118,8 +118,12 @@ return packer.startup(function(use)
     use {
         'epwalsh/obsidian.nvim',
         config = function()
+            local vault = '/mathworks/devel/sandbox/savadhan/obsidian/work_stuff'
+            if vim.fn.filereadable(vault) == 0 then
+                return
+            end
             require("obsidian").setup({
-                dir = '/mathworks/devel/sandbox/savadhan/obsidian/work_stuff',
+                dir = vault,
                 completion = {
                     nvim_cmp = true
                 }
@@ -142,6 +146,17 @@ return packer.startup(function(use)
                 max_lines = 0,
                 trim_scope = 'inner'
             }
+        end
+    }
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly', -- optional, updated every week. (see issue #1193)
+        config = function()
+            require('nvim-tree').setup()
         end
     }
 

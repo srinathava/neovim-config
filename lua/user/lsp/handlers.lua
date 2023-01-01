@@ -27,21 +27,33 @@ M.setup = function()
     })
 end
 
-local function lsp_highlight_document(client)
+local lastline = -1
+local function onCursorHold()
+    local curline = vim.fn.getpos('.')[2]
+    if curline ~= lastline then
+        lastline = curline
+        vim.diagnostic.open_float()
+    end
+end
+
+local function lsp_highlight_document(client, bufnr)
+    vim.o.updatetime = 500
     if client.server_capabilities.documentHighlightProvider then
-        vim.o.updatetime = 500
         vim.api.nvim_exec(
         [[
         augroup lsp_document_highlight
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorHold <buffer> lua vim.diagnostic.open_float()
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
         ]],
         false
         )
     end
+    vim.api.nvim_create_autocmd({"CursorHold"}, {
+        buffer = bufnr,
+        callback = onCursorHold
+    })
 end
 
 local function lsp_keymaps(bufnr)
@@ -67,9 +79,8 @@ M.on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
     end
     lsp_keymaps(bufnr)
-    lsp_highlight_document(client)
+    lsp_highlight_document(client, bufnr)
 
-    -- vim.api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
     vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 end
 
