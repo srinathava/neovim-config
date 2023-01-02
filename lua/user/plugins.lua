@@ -72,6 +72,7 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     use {
         "JoosepAlviste/nvim-ts-context-commentstring",
