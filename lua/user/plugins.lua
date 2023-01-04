@@ -71,6 +71,7 @@ return packer.startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
+        config = require('user.treesitter')
     }
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
@@ -107,7 +108,10 @@ return packer.startup(function(use)
         end
     }
 
-    use 'folke/which-key.nvim'
+    use {
+        'folke/which-key.nvim',
+        config = require('user.whichkey').setup()
+    }
 
     use 'dstein64/vim-startuptime'
 
@@ -118,26 +122,13 @@ return packer.startup(function(use)
 
     use {
         'epwalsh/obsidian.nvim',
-        config = function()
-            local vault = '/mathworks/devel/sandbox/savadhan/obsidian/work_stuff'
-            if vim.fn.filereadable(vault) == 0 then
-                return
-            end
-            require("obsidian").setup({
-                dir = vault,
-                completion = {
-                    nvim_cmp = true
-                }
-            })
-        end
+        config = require('user.obsidian')
     }
 
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
-            require('lualine').setup()
-        end
+        config = require('user.lualine')
     }
 
     use {

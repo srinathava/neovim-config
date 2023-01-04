@@ -41,21 +41,27 @@ local function new_terminal()
     term:toggle()
 end
 
--- timeoutlen of a reasonably small number works best to bring up the
--- window for not so frequently used shortcuts "fast enough"
-vim.o.timeoutlen = 200
+local M = {}
 
-wk.setup()
-wk.register({
-  m = {
-    name = "MathWorks",
-    c = { "<cmd>MWCompileProject<cr>", "Compile current project" },
-    o = { "<cmd>MWOpenFile<cr>", "Open file" },
-  },
-  t = {
-      name = "Terminal",
-      f = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
-      n = { new_terminal, "New terminal" },
-  },
-  G = { toggle_lazygit, "Lazygit" }
-}, { prefix = "<space>" })
+M.setup = function()
+    -- timeoutlen of a reasonably small number works best to bring up the
+    -- window for not so frequently used shortcuts "fast enough"
+    vim.o.timeoutlen = 200
+
+    wk.setup()
+    wk.register({
+        m = {
+            name = "MathWorks",
+            c = { "<cmd>MWCompileProject<cr>", "Compile current project" },
+            o = { "<cmd>MWOpenFile<cr>", "Open file" },
+        },
+        t = {
+            name = "Terminal",
+            f = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
+            n = { new_terminal, "New terminal" },
+        },
+        G = { toggle_lazygit, "Lazygit" }
+    }, { prefix = "<space>" })
+end
+
+return M

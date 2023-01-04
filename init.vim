@@ -17,6 +17,4 @@ require'user.plugins'
 require'user.lsp'
 require'user.cmp'
 require'user.snip'
-require'user.whichkey'
-require'user.treesitter'
 EOF
