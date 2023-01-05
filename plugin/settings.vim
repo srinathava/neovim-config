@@ -35,7 +35,8 @@ set wildmode=longest:list
 set wildmenu
 set autoread
 set mousemodel=popup_setpos
-set sessionoptions=buffers,curdir,folds,globals,resize,winpos,winsize
+set sessionoptions=buffers,curdir,folds,globals
+set undofile
 set modeline
 let mapleader='`'
 " incase i have to view some file with huge long lines...
