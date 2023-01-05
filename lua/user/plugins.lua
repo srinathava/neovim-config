@@ -152,7 +152,22 @@ return packer.startup(function(use)
         end
     }
 
+    -- Makes lua plugin development much better by adding all nvim
+    -- runtimepath to sumneko_lua language server
     use "folke/neodev.nvim"
+
+    -- automatic session management
+    use {
+        'Shatur/neovim-session-manager',
+        config = function()
+            require('session_manager').setup({
+                autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir
+            })
+        end
+    }
+
+    -- nicer ui.select for things like SessionManager
+    use { 'stevearc/dressing.nvim' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
