@@ -46,7 +46,9 @@ return packer.startup(function(use)
     use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
     -- Colorschemes
-    use 'folke/tokyonight.nvim'
+    use {
+        'folke/tokyonight.nvim',
+    }
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -161,13 +163,22 @@ return packer.startup(function(use)
         'Shatur/neovim-session-manager',
         config = function()
             require('session_manager').setup({
-                autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir
+                autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+                autosave_ignore_dirs = { '/tmp' }
             })
         end
     }
 
     -- nicer ui.select for things like SessionManager
     use { 'stevearc/dressing.nvim' }
+
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
+    -- magic case sensitive search and replace
+    use 'tpope/vim-abolish'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

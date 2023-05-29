@@ -4,7 +4,8 @@ return function()
             lualine_c = {
                 { 'filename', path = 1, symbols = { readonly = '[RO]' } }
             }
-        }
+        },
+        theme = 'tokyonight'
     })
 end
 

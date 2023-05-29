@@ -27,6 +27,8 @@ set ai
 set tw=75
 set ts=4
 set bs=2
+set cursorline
+set cursorlineopt=number
 if has('unix')
     set shell=bash
     set shellslash
@@ -105,8 +107,6 @@ let g:tokyonight_style = 'night'
 let g:tokyonight_colors = {
             \ 'comment': '#90EE90'
             \ }
-colorscheme tokyonight
-
 set number
 set numberwidth=4
 set signcolumn=yes
