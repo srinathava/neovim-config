@@ -39,7 +39,7 @@ end
 local function lsp_highlight_document(client, bufnr)
     vim.o.updatetime = 500
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec(
+        vim.api.nvim_exec2(
         [[
         augroup lsp_document_highlight
             autocmd! * <buffer>
@@ -47,7 +47,7 @@ local function lsp_highlight_document(client, bufnr)
             autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
         ]],
-        false
+        { output = false }
         )
     end
     vim.api.nvim_create_autocmd({"CursorHold"}, {

@@ -40,7 +40,6 @@ set mousemodel=popup_setpos
 set sessionoptions=buffers,curdir,folds,globals
 set undofile
 set modeline
-let mapleader='`'
 " incase i have to view some file with huge long lines...
 set linebreak
 " preserve some info from the last vim session
