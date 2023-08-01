@@ -71,6 +71,19 @@ return {
           "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
           "MunifTanjim/nui.nvim",
         }
+    },
+
+    {
+        "tpope/vim-fugitive",
+        cmd = { "Git", "Gvdiffsplit", "Gdiffsplit" }
+    },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        -- cmd = { "Gitsigns" },
+        config = function()
+            require('gitsigns').setup()
+        end
     }
 }
 
